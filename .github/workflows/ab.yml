@@ -1,8 +1,8 @@
 on: push
 
 jobs:
-  runs-no: ubuntu-latest
   job1:
+    runs-no: ubuntu-latest
     steps:
     - run: pwd
     - run: ls
