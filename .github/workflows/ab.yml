@@ -1,9 +1,24 @@
+name: 学习 github actions
 on: push
+
+permissions:
+  contents: write
 
 jobs:
   run-build:
+    name: npm-build工作
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: npm install
-      - run: npm run build
+      - name: 读出仓库内容
+        uses: actions/checkout@v4
+
+      - name: 安装依赖x项目打包
+        run: |
+          npm install
+          npm run build
+
+      - name: 部署
+        uses: JamesIves/github-pages-display-action@v4
+        with: 
+          branch: gh-pages
+          folder: build
